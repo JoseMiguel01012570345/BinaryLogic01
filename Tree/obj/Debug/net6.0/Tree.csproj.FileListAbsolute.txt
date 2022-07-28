@@ -1,0 +1,12 @@
+/home/jhosef/Documents/codes/BinaryLogic/Tree/bin/Debug/net6.0/Tree.deps.json
+/home/jhosef/Documents/codes/BinaryLogic/Tree/bin/Debug/net6.0/Tree.dll
+/home/jhosef/Documents/codes/BinaryLogic/Tree/bin/Debug/net6.0/ref/Tree.dll
+/home/jhosef/Documents/codes/BinaryLogic/Tree/bin/Debug/net6.0/Tree.pdb
+/home/jhosef/Documents/codes/BinaryLogic/Tree/obj/Debug/net6.0/Tree.csproj.AssemblyReference.cache
+/home/jhosef/Documents/codes/BinaryLogic/Tree/obj/Debug/net6.0/Tree.GeneratedMSBuildEditorConfig.editorconfig
+/home/jhosef/Documents/codes/BinaryLogic/Tree/obj/Debug/net6.0/Tree.AssemblyInfoInputs.cache
+/home/jhosef/Documents/codes/BinaryLogic/Tree/obj/Debug/net6.0/Tree.AssemblyInfo.cs
+/home/jhosef/Documents/codes/BinaryLogic/Tree/obj/Debug/net6.0/Tree.csproj.CoreCompileInputs.cache
+/home/jhosef/Documents/codes/BinaryLogic/Tree/obj/Debug/net6.0/Tree.dll
+/home/jhosef/Documents/codes/BinaryLogic/Tree/obj/Debug/net6.0/ref/Tree.dll
+/home/jhosef/Documents/codes/BinaryLogic/Tree/obj/Debug/net6.0/Tree.pdb
