@@ -1,0 +1,8 @@
+# BinaryLogic01
+This is for now,a console aplication.You can run it from the command dotnet run --project Program/Program.csproj
+
+To change the formula go to Program.cs and modify string s or add a Console.ReadLine()
+
+It is not admitted any other symbol not cosidered in Proposcional Logica(it is not supported yet for such exception) nor supported for wrong formulas.
+
+Enjoy it!!😎
