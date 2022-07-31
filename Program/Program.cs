@@ -2,19 +2,22 @@
 ;
 
 //⇔ ⇒ ∨ ∧ ¬
-string s = "p⇔q";
-Brakets bra = new Brakets(s.ToCharArray().ToList());
+string s = "[¬q]⇔[p∧q]";
+ConvertToFN x = new ConvertToFN(s.ToCharArray().ToList());
 
-BuildTree B = new BuildTree(bra.formula);
-TrueTable A = new TrueTable(B);
-NominalFormula C = new NominalFormula(A);
-Console.WriteLine();
-Console.WriteLine();
-Console.WriteLine();
-Console.WriteLine("Su Formula es {0} y su forma nominal es:", s);
+// Brakets bra = new Brakets(s.ToCharArray().ToList());
 
-for (int i = 0; i < C.formula.Count; i++)
-    Console.Write(C.formula[i]);
+// BuildTree B = new BuildTree(bra.formula);
+// TrueTable A = new TrueTable(B);
+// NominalFormula C = new NominalFormula(A);
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
+//Console.WriteLine("Su Formula es {0} y su forma nominal es:", s);
+
+
+for (int i = 0; i < x.formula.Count; i++)
+    Console.Write(x.formula[i]);
 Console.WriteLine();
 Console.WriteLine();
 Console.WriteLine();
