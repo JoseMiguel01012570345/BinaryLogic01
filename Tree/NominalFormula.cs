@@ -30,10 +30,12 @@ public class NominalFormula
     /////////////////////////////////////////////////////////////////////////////
     void CreateFNC()
     {
+        bool var = false;
         for (int i = 0; i < resoultVector.Count; i++)
         {
             if (resoultVector[i] == 0)
             {
+                var = true;
                 formula.Add('[');
                 for (int j = 0; j < interpretations[i].Length; j++)
                 {
@@ -54,15 +56,18 @@ public class NominalFormula
                 formula.Add('∧');
             }
         }
-        formula.RemoveAt(formula.Count - 1);
+        if (var == true)
+            formula.RemoveAt(formula.Count - 1);
     }
     /////////////////////////////////////////////////////////////////////////////
     void CreateFND()
     {
+        bool var = false;
         for (int i = 0; i < resoultVector.Count; i++)
         {
             if (resoultVector[i] == 1)
             {
+                var = true;
                 formula.Add('[');
                 for (int j = 0; j < interpretations[i].Length; j++)
                 {
@@ -83,7 +88,8 @@ public class NominalFormula
                 formula.Add('∨');
             }
         }
-        formula.RemoveAt(formula.Count - 1);
+        if (var == true)
+            formula.RemoveAt(formula.Count - 1);
     }
 }
 /////////////////////////////////////////////////////////////////////////////

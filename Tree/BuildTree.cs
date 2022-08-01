@@ -34,7 +34,7 @@ public class BuildTree
             }
             if (count == 0 && (Formula[i] == '⇔' || Formula[i] == '⇒' || Formula[i] == '∨' || Formula[i] == '∧'))//evaluar el resto de los operadores
             {
-                if ((Formula[i - 1] == ']') && (Formula[i + 1] == '['))
+                if ((Formula[i - 1] == ']') && (Formula[i + 1] == '¬' || Formula[i + 1] == '['))
                 {
                     Store = new StoreTree(Formula[i]);
                     Store.LeftMember = StoreIntoTree(SubString(Formula, 0, i), Store.LeftMember = new StoreTree(' '), count);//asignamos el miembro izquierdo
@@ -89,6 +89,7 @@ public class BuildTree
             if (count == 0 && (i != formulia.Count - 1 || formulia[0] != '[')) return formulia;
             S.Add(formulia[i]);
         }
+
         return S;
     }
     /////////////////////////////////////////////////////////////////////////////    

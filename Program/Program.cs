@@ -1,8 +1,10 @@
 ﻿using Tree;
 
 //⇔ ⇒ ∨ ∧ ¬
-//string s = "[p∧¬q]∨[p∧q]∨[¬p∧q]";
-string s = "[p⇒q]∧[p∨q]";
+string s = "[p⇒q]∧¬[p⇔¬[q]]";
+Checker checker = new Checker(s);
+
+
 Brakets bra = new Brakets(s.ToCharArray().ToList());
 
 
