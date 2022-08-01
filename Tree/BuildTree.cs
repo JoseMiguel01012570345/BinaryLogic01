@@ -3,10 +3,12 @@ public class BuildTree
 {
     public StoreTree Store = new StoreTree(' ');
     public List<char> Literals = new List<char>();
+    /////////////////////////////////////////////////////////////////////////////
     public BuildTree(List<char> formula)
     {
         this.Store = StoreIntoTree(formula, this.Store, 0);
     }
+    /////////////////////////////////////////////////////////////////////////////
     public StoreTree StoreIntoTree(List<char> Formula, StoreTree Store, int count)
     {
         if (Formula.Count == 1 && char.IsLetter(Formula[0]))//si es un literal llegamos al fondo
@@ -44,6 +46,7 @@ public class BuildTree
         }
         return Store;
     }
+    /////////////////////////////////////////////////////////////////////////////
     bool Check(List<char> Formula)
     {
         int count = 0;
@@ -59,17 +62,38 @@ public class BuildTree
         }
         return true;
     }
+    /////////////////////////////////////////////////////////////////////////////
     List<char> SubString(List<char> formula, int start, int finish)
     {
         List<char> C = new List<char>();
-        if (formula[start] == '[') { start += 1; finish -= 1; }
         for (int i = start; i < finish; i++)
         {
             C.Add(formula[i]);
         }
-        return C;
+        return BracketDeleter(C);
     }
+    /////////////////////////////////////////////////////////////////////////////    
+    List<char> BracketDeleter(List<char> formulia)
+    {
+        int count = 0;
+        List<char> S = new List<char>();
+        for (int i = 0; i < formulia.Count; i++)
+        {
+            if (formulia[i] == '[') count++;
+            if (formulia[i] == ']') count--;
+            if (count == 0 && i == formulia.Count - 1 && formulia[0] == '[')
+            {
+                S.RemoveAt(0);
+                return S;
+            }
+            if (count == 0 && (i != formulia.Count - 1 || formulia[0] != '[')) return formulia;
+            S.Add(formulia[i]);
+        }
+        return S;
+    }
+    /////////////////////////////////////////////////////////////////////////////    
 }
+/////////////////////////////////////////////////////////////////////////////
 public class StoreTree
 {
     public char literal;//si no es null entonces LeftMember y RightMember son nulos
@@ -79,10 +103,12 @@ public class StoreTree
     public StoreTree RightMember;
     public int ValueRightMember = int.MaxValue;
     public char operacion;
+    /////////////////////////////////////////////////////////////////////////////
     public StoreTree(char operacion)
     {
         this.operacion = operacion;
     }
+    /////////////////////////////////////////////////////////////////////////////
     public void Opearte()
     {
         if (ValueLeftMember != int.MaxValue && ValueRightMember != int.MaxValue)
@@ -95,3 +121,4 @@ public class StoreTree
         if (operacion == '¬') FormulaVALUE = Operations.Nor(ValueLeftMember, ValueRightMember);
     }
 }
+/////////////////////////////////////////////////////////////////////////////

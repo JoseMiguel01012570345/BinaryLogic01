@@ -2,6 +2,7 @@ namespace Tree;
 public static class Operations
 
 {
+    /////////////////////////////////////////////////////////////////////////////
     public static int Nor(int valor1, int valor2)
     {
         if (valor1 == int.MaxValue && valor2 != int.MaxValue) return (valor2 == 1) ? valor2 = 0 : valor2 = 1;
@@ -9,6 +10,7 @@ public static class Operations
 
         return 0;
     }
+    /////////////////////////////////////////////////////////////////////////////
     public static int SSi(int valor1, int valor2)
     {
         if (valor1 == 0 && valor2 == 0) return 1;
@@ -17,6 +19,7 @@ public static class Operations
         if (valor1 == 0 && valor2 == 1) return 0;
         return 0;
     }
+    /////////////////////////////////////////////////////////////////////////////
     public static int Implication(int valor1, int valor2)
     {
         if (valor1 == 0 && valor2 == 0) return 1;
@@ -25,12 +28,14 @@ public static class Operations
         if (valor1 == 0 && valor2 == 1) return 1;
         return 0;
     }
+    /////////////////////////////////////////////////////////////////////////////
     public static int AND(int valor1, int valor2)
     {
         if (valor1 == 1 && valor2 == 1) return 1;
 
         return 0;
     }
+    /////////////////////////////////////////////////////////////////////////////
     public static int OR(int valor1, int valor2)
     {
         if (valor1 == 1 || valor2 == 1) return 1;
@@ -38,3 +43,4 @@ public static class Operations
         return 0;
     }
 }
+/////////////////////////////////////////////////////////////////////////////

@@ -7,16 +7,18 @@ public class TrueTable//table that contain all the possible interpretations valu
     public List<int> resoult = new List<int>();
     MiniTree Storing = new MiniTree();
     BuildTree Store;
+    /////////////////////////////////////////////////////////////////////////////
     public TrueTable(BuildTree Store)
     {
         AllVariables = Store.Literals;
         this.literals = UnUsefull(AllVariables);
         this.Store = Store;
-        Interpretate(0, this.Storing);
-        StoreInterpretation(0, this.Storing, new int[literals.Count]);
+        M.Interpretate(0, this.Storing, literals.Count);//interpretate formula
+        M.StoreInterpretation(0, this.Storing, new int[literals.Count], literals.Count);//store interpretation
+        Interpretation = M.Interpretation;
         Evaluator(Store);
     }
-    ////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
     List<char> UnUsefull(List<char> literals)
     {
         for (int i = 0; i < literals.Count; i++)
@@ -31,7 +33,7 @@ public class TrueTable//table that contain all the possible interpretations valu
         }
         return literals;
     }
-
+    /////////////////////////////////////////////////////////////////////////////
     void Evaluator(BuildTree Store)
     {
         StoreTree copy = new StoreTree(' ');
@@ -43,6 +45,7 @@ public class TrueTable//table that contain all the possible interpretations valu
             resoult.Add(FormulaInterpretated(copy).FormulaVALUE);//conseguir los valores de una interpretacion
         }
     }
+    /////////////////////////////////////////////////////////////////////////////
     StoreTree CopyByValue(StoreTree original, StoreTree copy)
     {
         copy.FormulaVALUE = original.FormulaVALUE;
@@ -62,6 +65,7 @@ public class TrueTable//table that contain all the possible interpretations valu
         }
         return copy;
     }
+    /////////////////////////////////////////////////////////////////////////////
     StoreTree FormulaInterpretated(StoreTree tree)//interpretamos la formula
     {
         if (tree.LeftMember != null && tree.LeftMember.FormulaVALUE != int.MaxValue)//si el valor de la formula existe
@@ -86,6 +90,7 @@ public class TrueTable//table that contain all the possible interpretations valu
         tree.Opearte();//si tenemos los valores entonces efectuamos la operacion
         return tree;
     }
+    /////////////////////////////////////////////////////////////////////////////
     int[] ValuesForLiterals(int i)//get the array of values by literal
     {
         int[] values = new int[AllVariables.Count];
@@ -100,6 +105,7 @@ public class TrueTable//table that contain all the possible interpretations valu
         }
         return values;
     }
+    /////////////////////////////////////////////////////////////////////////////
     StoreTree GiveValuesToLiterals(StoreTree Store, int[] values)//travel till find a literal and give its value
     {
         if (char.IsLetter(Store.literal))
@@ -115,6 +121,7 @@ public class TrueTable//table that contain all the possible interpretations valu
 
         return Store;
     }
+    /////////////////////////////////////////////////////////////////////////////
     List<int> Indexes(char a, List<char> AllLiterals, int start)//devuelve los indices en los que se encuntran el char a en el grupo de variables
     {
         List<int> aux = new List<int>();
@@ -124,46 +131,5 @@ public class TrueTable//table that contain all the possible interpretations valu
 
         return aux;
     }
-    /////////////////////////////////////////////////////////////////
-    public MiniTree Interpretate(int interator, MiniTree mini)//build a tree of interpretations
-    {
-        if (literals.Count == 0) return mini;
-
-        if (interator == literals.Count - 1)
-        {
-            mini.left = new MiniTree();
-            mini.right = new MiniTree();
-            return mini;
-        }
-        mini.left = Interpretate(interator += 1, mini.left = new MiniTree());
-        interator -= 1;
-        mini.right = Interpretate(interator += 1, mini.right = new MiniTree());
-        return mini;
-    }
-    void StoreInterpretation(int iterator, MiniTree tree, int[] row)//stores the interpretations considered at a MiniTree object in matrix
-    {
-        //caso base
-        if (iterator == literals.Count)
-        {
-            if (Interpretation.Contains(row)) return;
-            Interpretation.Add(row);
-            return;
-        }
-        if (tree.left != null)
-        {
-            row[iterator] = 1;
-            int[] aux = new int[row.Length];
-            row.CopyTo(aux, 0);
-            StoreInterpretation(iterator += 1, tree.left, aux);
-            iterator -= 1;
-        }
-        if (tree.right != null)
-        {
-            row[iterator] = 0;
-            int[] aux = new int[row.Length];
-            row.CopyTo(aux, 0);
-            StoreInterpretation(iterator += 1, tree.right, aux);
-        }
-        return;
-    }
+    /////////////////////////////////////////////////////////////////////////////
 }

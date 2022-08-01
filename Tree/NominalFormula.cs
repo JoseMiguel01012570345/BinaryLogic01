@@ -1,9 +1,12 @@
 namespace Tree;
 public class NominalFormula
 {
-    List<int> resoultVector = new List<int>();
-    List<int[]> interpretations = new List<int[]>();
-    List<char> Literals = new List<char>();
+    public List<int> resoultVector = new List<int>();
+    public List<int[]> interpretations = new List<int[]>();
+    public List<char> formula = new List<char>();
+    public List<char> Literals = new List<char>();
+    public char operation = ' ';
+    /////////////////////////////////////////////////////////////////////////////
     public NominalFormula(TrueTable table)
     {
         resoultVector = table.resoult;
@@ -11,6 +14,7 @@ public class NominalFormula
         Literals = table.literals;
         FormulaChosing();
     }
+    /////////////////////////////////////////////////////////////////////////////
     void FormulaChosing()
     {
         int zeros = 0;
@@ -20,10 +24,10 @@ public class NominalFormula
             if (resoultVector[i] == 0) zeros++;
             else ones++;
         }
-        if (zeros >= ones) CreateFND();
-        else CreateFND();
+        if (zeros >= ones) { operation = '∨'; CreateFND(); }
+        else { operation = '∧'; CreateFNC(); }
     }
-    public List<char> formula = new List<char>();
+    /////////////////////////////////////////////////////////////////////////////
     void CreateFNC()
     {
         for (int i = 0; i < resoultVector.Count; i++)
@@ -52,6 +56,7 @@ public class NominalFormula
         }
         formula.RemoveAt(formula.Count - 1);
     }
+    /////////////////////////////////////////////////////////////////////////////
     void CreateFND()
     {
         for (int i = 0; i < resoultVector.Count; i++)
@@ -81,3 +86,4 @@ public class NominalFormula
         formula.RemoveAt(formula.Count - 1);
     }
 }
+/////////////////////////////////////////////////////////////////////////////

@@ -4,11 +4,13 @@ public class ConvertToFN
     public List<char> formula = new List<char>();
     List<char> SSIFormula = new List<char>();
     List<char> ImplicationFormula = new List<char>();
+    /////////////////////////////////////////////////////////////////////////////
     public ConvertToFN(List<char> formula)
     {
         this.formula = formula;
         DetectSymbols();
     }
+    /////////////////////////////////////////////////////////////////////////////
     void DetectSymbols()//⇔ ⇒ ∨ ∧ ¬
     {
         for (int i = 0; i < formula.Count; i++)
@@ -35,6 +37,7 @@ public class ConvertToFN
             }
         }
     }
+    /////////////////////////////////////////////////////////////////////////////
     void ConvertFormula(int index)
     {
         if (formula[index] == '⇔')//si nos encotramos un ssi reemplazamos en FinalFormula
@@ -50,6 +53,7 @@ public class ConvertToFN
                 formula.Insert(index + j, ImplicationFormula[j]);
         }
     }
+    /////////////////////////////////////////////////////////////////////////////
     List<char> GetLeftFormula(int index)
     {
         List<char> formulia = new List<char>();
@@ -82,6 +86,7 @@ public class ConvertToFN
         }
         return formulia;
     }
+    /////////////////////////////////////////////////////////////////////////////
     List<char> GetRightFormula(int index)
     {
         int Count = 0;
@@ -115,6 +120,7 @@ public class ConvertToFN
         }
         return formulia;
     }
+    /////////////////////////////////////////////////////////////////////////////
     void GetFNFormImplication(List<char> A, List<char> B)//⇔ ⇒ ∨ ∧ ¬
     {
         ImplicationFormula.Add('¬');
@@ -125,6 +131,7 @@ public class ConvertToFN
         for (int i = 0; i < B.Count; i++)
             ImplicationFormula.Add(B[i]);
     }
+    /////////////////////////////////////////////////////////////////////////////
     void GetFNFormSSI(List<char> A, List<char> B)
     {
         SSIFormula.Add('[');
@@ -153,4 +160,5 @@ public class ConvertToFN
 
         SSIFormula.Add(']');
     }
+    /////////////////////////////////////////////////////////////////////////////
 }

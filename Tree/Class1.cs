@@ -2,6 +2,7 @@
 public class Brakets
 {
     public List<char> formula = new List<char>();
+    /////////////////////////////////////////////////////////////////////////////
     public Brakets(List<char> formula)
     {
         this.formula = formula;
@@ -9,6 +10,7 @@ public class Brakets
         PutBrackets();
         if (this.formula.Count == 0) return;
     }
+    /////////////////////////////////////////////////////////////////////////////
     void PutBrackets()
     {
         for (int i = 0; i < formula.Count; i++)
@@ -18,6 +20,13 @@ public class Brakets
                 if (char.IsLetter(formula[i]))
                 {
                     if (i - 1 >= 0 && i + 1 < formula.Count && formula[i - 1] == '[' && formula[i + 1] == ']') continue;
+                    if (i - 1 >= 0 && i + 1 < formula.Count && formula[i - 1] == '[' && formula[i - 1] == '¬')
+                    {
+                        formula.Insert(i - 1, '[');
+                        formula.Insert(i + 2, ']');
+                        i += 2;
+                        continue;
+                    }
                     formula.Insert(i, '[');
                     formula.Insert(i + 2, ']');
                     i++;
@@ -35,3 +44,4 @@ public class Brakets
         }
     }
 }
+/////////////////////////////////////////////////////////////////////////////
